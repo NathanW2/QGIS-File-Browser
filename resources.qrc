@@ -1,0 +1,6 @@
+<RCC> 
+  <qresource prefix="/plugins/qgisfilebrowser" > 
+    <file>icon.png</file> 
+  </qresource> 
+</RCC> 
+
