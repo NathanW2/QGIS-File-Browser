@@ -29,6 +29,8 @@ import resources
 # Import the code for the dialog
 from qgisfilebrowserdialog import QGISFileBrowserDialog
 
+explorer = None
+
 class QGISFileBrowser:
 
   def __init__(self, iface):
@@ -53,26 +55,25 @@ class QGISFileBrowser:
 
   # run method that performs all the real work
   def run(self):
+    global explorer
+    if explorer is None:
     # create and show the dialog
-    dlg = QGISFileBrowserDialog()
-
-    dlg.LoadFiles()
+        explorer = QGISFileBrowserDialog()
+        explorer.LoadFiles()
     # show the dialog
-    dlg.show()
-    result = dlg.exec_()
-    # See if OK was pressed
-    if result == 1:
-      # do something useful (delete the line containing pass and
-      # substitute with your code
-      pass
+        if not self.iface.mainWindow().restoreDockWidget(explorer):
+            self.iface.mainWindow().addDockWidget(Qt.LeftDockWidgetArea,explorer)
+        explorer.show()
+    else:
+        explorer.setVisible(explorer.isVisible())
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = QMainWindow(None)
     #brow = QGISFileBrowser(None)
-    dlg = QGISFileBrowserDialog()
-    dlg.LoadFiles()
-    win.addDockWidget(Qt.LeftDockWidgetArea,dlg)
+    explorer = QGISFileBrowserDialog()
+    explorer.LoadFiles()
+    win.addDockWidget(Qt.LeftDockWidgetArea,explorer)
     #brow.run()
     win.show()
 

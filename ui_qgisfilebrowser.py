@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_qgisfilebrowser.ui'
 #
-# Created: Tue Jan 25 15:22:55 2011
-#      by: PyQt4 UI code generator 4.5.2
+# Created: Wed Jan 26 01:06:24 2011
+#      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -15,17 +15,20 @@ class Ui_QGISFileBrowser(object):
         QGISFileBrowser.resize(300, 777)
         self.dockWidgetContents = QtGui.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")
+        self.verticalLayout = QtGui.QVBoxLayout(self.dockWidgetContents)
+        self.verticalLayout.setContentsMargins(4, 9, -1, 7)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.filterText = QtGui.QLineEdit(self.dockWidgetContents)
+        self.filterText.setObjectName("filterText")
+        self.verticalLayout.addWidget(self.filterText)
         self.fileTree = QtGui.QTreeView(self.dockWidgetContents)
-        self.fileTree.setGeometry(QtCore.QRect(10, 50, 281, 701))
         self.fileTree.setObjectName("fileTree")
-        self.plainTextEdit = QtGui.QPlainTextEdit(self.dockWidgetContents)
-        self.plainTextEdit.setGeometry(QtCore.QRect(10, 10, 281, 31))
-        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.verticalLayout.addWidget(self.fileTree)
         QGISFileBrowser.setWidget(self.dockWidgetContents)
 
         self.retranslateUi(QGISFileBrowser)
         QtCore.QMetaObject.connectSlotsByName(QGISFileBrowser)
 
     def retranslateUi(self, QGISFileBrowser):
-        QGISFileBrowser.setWindowTitle(QtGui.QApplication.translate("QGISFileBrowser", "QGISFileBrowser", None, QtGui.QApplication.UnicodeUTF8))
+        QGISFileBrowser.setWindowTitle(QtGui.QApplication.translate("QGISFileBrowser", "File Browser", None, QtGui.QApplication.UnicodeUTF8))
 

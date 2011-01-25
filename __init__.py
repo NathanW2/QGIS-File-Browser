@@ -20,7 +20,7 @@ email                : woodrow.nathan@gmail.com
  This script initializes the plugin, making it known to QGIS.
 """
 def name(): 
-  return "A tree like file browser that can open any qgis supported format into qgis." 
+  return "QGIS File Browser"
 def description():
   return "A tree like file browser that can open any qgis supported format into qgis."
 def version(): 

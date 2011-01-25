@@ -38,21 +38,23 @@ class QGISFileBrowserDialog(QDockWidget):
     self.proxy.setSourceModel(self.model)
     self.proxy.setFilterKeyColumn(0)
     filter = "^.*\.(tab|shp)$"
-    self.ui.plainTextEdit.appendPlainText(filter)
+    self.ui.filterText.setText(filter)
     self.proxy.setFilterRegExp(QRegExp(filter,Qt.CaseInsensitive,QRegExp.RegExp))
 
     self.ui.fileTree.setModel(self.proxy)
-
-    self.connect(self.ui.plainTextEdit,SIGNAL("textChanged()"),self.updateFilter)
+    self.ui.fileTree.hideColumn(1)
+    self.ui.fileTree.hideColumn(2)
+    self.ui.fileTree.hideColumn(3)
+    
+    self.connect(self.ui.filterText,SIGNAL("textChanged( const QString &)"),self.updateFilter)
     self.connect(self.ui.fileTree,SIGNAL("doubleClicked( const QModelIndex &)"), self.itemClicked)
 
   def itemClicked(self, item):
     index = item.model().mapToSource(item)
     print self.model.filePath(index)
 
-  def updateFilter(self):
-    filter = self.ui.plainTextEdit.toPlainText()
-    self.proxy.setFilterRegExp(QRegExp(filter,Qt.CaseInsensitive,QRegExp.RegExp))
+  def updateFilter(self, text):
+    self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))
 
 class MyFilter(QSortFilterProxyModel):
     def __init__(self,parent=None):
