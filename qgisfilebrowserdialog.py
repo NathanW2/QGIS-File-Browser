@@ -48,7 +48,13 @@ class QGISFileBrowserDialog(QDockWidget):
     self.ui.fileTree.hideColumn(1)
     self.ui.fileTree.hideColumn(2)
     self.ui.fileTree.hideColumn(3)
-    
+    #Hack to make sure the horizontal scroll bar shows up
+    self.ui.fileTree.header().setStretchLastSection(False)
+    self.ui.fileTree.header().setResizeMode(QHeaderView.ResizeToContents)
+    self.ui.fileTree.setColumnWidth(0,280)
+    #Just hide the header because we don't need to see it. 
+    self.ui.fileTree.header().hide()
+
     self.connect(self.ui.filterText,SIGNAL("textChanged( const QString &)"),self.updateFilter)
     self.connect(self.ui.fileTree,SIGNAL("doubleClicked( const QModelIndex &)"), self.itemClicked)
 

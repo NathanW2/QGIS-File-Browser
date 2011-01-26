@@ -69,8 +69,13 @@ class QGISFileBrowser:
     explorer.fileOpenRequest.connect(self.openFile)    
     
   def openFile(self,file):
-    print "Opening file %s" % file
-    self.iface.addVectorLayer(file,"","ogr")
+    extn = os.path.splitext(str(file))[1]
+    if extn.lower() == '.qgs':
+        #If we are project file we can open that too
+        self.iface.addProject(file)
+    else:
+        #Otherwise we'll just try opening it as a noraml layer
+        self.iface.addVectorLayer(file,"","ogr")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
