@@ -25,6 +25,9 @@ from ui_qgisfilebrowser import Ui_QGISFileBrowser
 # create the dialog for zoom to point
 
 class QGISFileBrowserDialog(QDockWidget):
+  #Signal notify when a file needs to be opened
+  fileOpenRequest = pyqtSignal(file)
+  
   def __init__(self):
     QDockWidget.__init__(self)
     # Set up the user interface from Designer.
@@ -51,7 +54,9 @@ class QGISFileBrowserDialog(QDockWidget):
 
   def itemClicked(self, item):
     index = item.model().mapToSource(item)
-    print self.model.filePath(index)
+    filepath = self.model.filePath(index)
+    #self.emit(SIGNAL("fileOpenRequest",filepath))
+    self.fileOpenRequest.emit(filepath)
 
   def updateFilter(self, text):
     self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))

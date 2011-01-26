@@ -63,18 +63,21 @@ class QGISFileBrowser:
     # show the dialog
         if not self.iface.mainWindow().restoreDockWidget(explorer):
             self.iface.mainWindow().addDockWidget(Qt.LeftDockWidgetArea,explorer)
-        explorer.show()
+            explorer.show()
     else:
         explorer.setVisible(explorer.isVisible())
+    explorer.fileOpenRequest.connect(self.openFile)    
+    
+  def openFile(self,file):
+    print "Opening file %s" % file
+    self.iface.addVectorLayer(file,"","ogr")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = QMainWindow(None)
-    #brow = QGISFileBrowser(None)
     explorer = QGISFileBrowserDialog()
     explorer.LoadFiles()
     win.addDockWidget(Qt.LeftDockWidgetArea,explorer)
-    #brow.run()
     win.show()
 
     retval = app.exec_()
