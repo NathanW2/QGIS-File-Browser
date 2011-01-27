@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_qgisfilebrowser.ui'
 #
-# Created: Wed Jan 26 01:06:24 2011
-#      by: PyQt4 UI code generator 4.7.2
+# Created: Thu Jan 27 09:57:45 2011
+#      by: PyQt4 UI code generator 4.5.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -18,9 +18,21 @@ class Ui_QGISFileBrowser(object):
         self.verticalLayout = QtGui.QVBoxLayout(self.dockWidgetContents)
         self.verticalLayout.setContentsMargins(4, 9, -1, 7)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.filterText = QtGui.QLineEdit(self.dockWidgetContents)
-        self.filterText.setObjectName("filterText")
-        self.verticalLayout.addWidget(self.filterText)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label = QtGui.QLabel(self.dockWidgetContents)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Ignored)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setObjectName("label")
+        self.horizontalLayout.addWidget(self.label)
+        self.filtercombobox = QtGui.QComboBox(self.dockWidgetContents)
+        self.filtercombobox.setAutoFillBackground(False)
+        self.filtercombobox.setObjectName("filtercombobox")
+        self.horizontalLayout.addWidget(self.filtercombobox)
+        self.verticalLayout.addLayout(self.horizontalLayout)
         self.fileTree = QtGui.QTreeView(self.dockWidgetContents)
         self.fileTree.setObjectName("fileTree")
         self.verticalLayout.addWidget(self.fileTree)
@@ -31,4 +43,5 @@ class Ui_QGISFileBrowser(object):
 
     def retranslateUi(self, QGISFileBrowser):
         QGISFileBrowser.setWindowTitle(QtGui.QApplication.translate("QGISFileBrowser", "File Browser", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("QGISFileBrowser", "Filter", None, QtGui.QApplication.UnicodeUTF8))
 
