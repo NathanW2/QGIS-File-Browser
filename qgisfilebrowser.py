@@ -63,11 +63,11 @@ class QGISFileBrowser:
     # show the dialog
         if not self.iface.mainWindow().restoreDockWidget(explorer):
             self.iface.mainWindow().addDockWidget(Qt.LeftDockWidgetArea,explorer)
-            explorer.show()
+        explorer.show()
     else:
-        explorer.setVisible(explorer.isVisible())
-    explorer.fileOpenRequest.connect(self.openFile)    
-    
+        explorer.setVisible(not explorer.isVisible())
+    explorer.fileOpenRequest.connect(self.openFile)
+
   def openFile(self,file):
     extn = os.path.splitext(str(file))[1]
     if extn.lower() == '.qgs':

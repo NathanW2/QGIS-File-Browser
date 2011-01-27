@@ -54,7 +54,7 @@ filters = {
 
 class QGISFileBrowserDialog(QDockWidget):
   #Signal notify when a file needs to be opened
-  fileOpenRequest = pyqtSignal(file)
+  fileOpenRequest = pyqtSignal(QString)
 
   def __init__(self):
     QDockWidget.__init__(self)
@@ -91,14 +91,13 @@ class QGISFileBrowserDialog(QDockWidget):
     self.connect(self.ui.fileTree,SIGNAL("doubleClicked( const QModelIndex &)"), self.itemClicked)
 
   def filterChanged(self, text):
-    print self.proxy
     self.proxy.setFilterRegExp(QRegExp(filters[str(text)],Qt.CaseInsensitive,QRegExp.RegExp))
 
   def itemClicked(self, item):
     index = item.model().mapToSource(item)
     filepath = self.model.filePath(index)
     #self.emit(SIGNAL("fileOpenRequest",filepath))
-    self.fileOpenRequest.emit(filepath)
+    self.fileOpenRequest.emit(str(filepath))
 
   def updateFilter(self, text):
     self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))
