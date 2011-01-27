@@ -1,0 +1,26 @@
+    QGIS File Browser - Version 1.0
+=========================================
+The QGIS file browser is a tree like file browser plugin for QGIS.
+
+This plugin allows the user to explore folders and open any supported (currently only
+OGR) vector layer, qgis project files can also be opened, by double clicking the item in the list.
+
+The QGIS file browser plugin is dockable to any part of the QGIS interface.
+
+File types can be filtered using the combo box at the top of the dialog, the tree will update the tree to only show the
+selected file type.
+
+===========================================
+                Change Log
+
+Version 1.0
+    + Supports opening most ogr vector formats
+    + Can open qgis project file
+    + First release
+
+===========================================
+
+TODO
+    - Get a new icon
+    - Add support for more data types
+    - Add support to allow opening tables from a database connection.
