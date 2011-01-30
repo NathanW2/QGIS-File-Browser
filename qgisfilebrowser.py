@@ -60,13 +60,14 @@ class QGISFileBrowser:
     # create and show the dialog
         explorer = QGISFileBrowserDialog()
         explorer.LoadFiles()
-    # show the dialog
+	explorer.fileOpenRequest.connect(self.openFile)
+		# show the dialog
         if not self.iface.mainWindow().restoreDockWidget(explorer):
             self.iface.mainWindow().addDockWidget(Qt.LeftDockWidgetArea,explorer)
         explorer.show()
     else:
         explorer.setVisible(not explorer.isVisible())
-    explorer.fileOpenRequest.connect(self.openFile)
+    
 
   def openFile(self,file):
     extn = os.path.splitext(str(file))[1]
