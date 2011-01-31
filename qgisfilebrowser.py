@@ -31,6 +31,81 @@ from qgisfilebrowserdialog import QGISFileBrowserDialog
 
 explorer = None
 
+vectors = [
+	    'shp', 
+	    'mif', 
+	    'tab', 
+	    '000', 
+	    'dgn', 
+	    'vrt', 
+	    'bna', 
+	    'csv', 
+	    'gml', 
+	    'gpx', 
+	    'kml', 
+	    'geojson', 
+	    'itf', 
+	    'xml', 
+	    'ili', 
+	    'gmt', 
+	    'sqlite', 
+	    'mdb', 
+	    'e00', 
+	    'dxf', 
+	    'gxt', 
+	    'txt', 
+	    'xml'
+]
+
+rasters = [
+	  'vrt', 
+	  'tiff', 
+	  'tif', 
+	  'ntf', 
+	  'toc', 
+	  'img', 
+	  'gff', 
+	  'asc', 
+	  'ddf', 
+	  'dt0', 
+	  'dt1', 
+	  'dt2', 
+	  'png', 
+	  'jpg', 
+	  'jpeg', 
+	  'mem', 
+	  'gif', 
+	  'n1', 
+	  'xpm', 
+	  'bmp', 
+	  'pix', 
+	  'map', 
+	  'mpr', 
+	  'mpl', 
+	  'rgb', 
+	  'hgt', 
+	  'ter', 
+	  'nc', 
+	  'grb', 
+	  'hdr', 
+	  'rda', 
+	  'bt', 
+	  'lcp', 
+	  'rik', 
+	  'dem', 
+	  'gxf', 
+	  'hdf5', 
+	  'grd', 
+	  'grc', 
+	  'gen', 
+	  'img', 
+	  'blx', 
+	  'blx', 
+	  'sqlite', 
+	  'sdat'
+]
+
+
 class QGISFileBrowser:
 
   def __init__(self, iface):
@@ -70,13 +145,18 @@ class QGISFileBrowser:
     
 
   def openFile(self,file):
-    extn = os.path.splitext(str(file))[1]
-    if extn.lower() == '.qgs':
-        #If we are project file we can open that too
+    #Get the extension without the .
+    extn = os.path.splitext(str(file))[1][1:].lower()
+    if extn == 'qgs':
+        #If we are project file we can just open that.
         self.iface.addProject(file)
-    else:
-        #Otherwise we'll just try opening it as a noraml layer
+    elif extn in vectors:
         self.iface.addVectorLayer(file,"","ogr")
+    elif extn in rasters:
+	self.iface.addRasterLayer(file,"")
+    else:
+	#We should never really get here, but just in case.
+	pass
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
