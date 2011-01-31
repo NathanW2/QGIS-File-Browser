@@ -12,6 +12,11 @@ selected file type.
 
 ===========================================
                 Change Log
+Version 1.2
+    + Added support to open raster files
+
+Version 1.1
+    ! Fixed some bugs
 
 Version 1.0
     + Supports opening most ogr vector formats
