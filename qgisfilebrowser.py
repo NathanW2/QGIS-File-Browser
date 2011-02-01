@@ -58,6 +58,8 @@ vectors = [
 ]
 
 rasters = [
+	  'ecw',
+	  'sid',
 	  'vrt', 
 	  'tiff', 
 	  'tif', 
