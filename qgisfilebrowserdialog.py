@@ -53,128 +53,127 @@ filters = {
    '[Vector] QGIS Project File (*.qgs)'  : '^.*\.(qgs)$',
    'All supported files' :  '^.*\.(shp|mif|tab|000|dgn|vrt|bna|csv|gml|gpx|kml|geojson|itf|xml|ili|gmt|sqlite|mdb|e00|dxf|gxt|txt|xml|qgs|vrt|tiff|tif|ntf|toc|img|gff|asc|ddf|dt0|dt1|dt2|png|jpg|jpeg|mem|gif|n1|xpm|bmp|pix|map|mpr|mpl|rgb|hgt|ter|nc|grb|hdr|rda|bt|lcp|rik|dem|gxf|hdf5|grd|grc|gen|img|blx|blx|sqlite|sdat)$',
    'All vector files' :  '^.*\.(shp|mif|tab|000|dgn|vrt|bna|csv|gml|gpx|kml|geojson|itf|xml|ili|gmt|sqlite|mdb|e00|dxf|gxt|txt|xml)$',
-   'All raster files' : '^.*\.(ecw|vrt|tiff|tif|ntf|toc|img|gff|asc|ddf|dt0|dt1|dt2|png|jpg|jpeg|mem|gif|n1|xpm|bmp|pix|map|mpr|mpl|rgb|hgt|ter|nc|grb|hdr|rda|bt|lcp|rik|dem|gxf|hdf5|grd|grc|gen|img|blx|blx|sqlite|sdat)$',
+   'All raster files' : '^.*\.(sid|ecw|vrt|tiff|tif|ntf|toc|img|gff|asc|ddf|dt0|dt1|dt2|png|jpg|jpeg|mem|gif|n1|xpm|bmp|pix|map|mpr|mpl|rgb|hgt|ter|nc|grb|hdr|rda|bt|lcp|rik|dem|gxf|hdf5|grd|grc|gen|img|blx|blx|sqlite|sdat)$',
    '[Raster] MrSID (*.sid)' : '^.*\.(sid)$',
-   '[Raster] Enhanced Compression Wavelet (*.ecw)' : '^.*\.(ecw)$',  
-   '[Raster] Virtual Raster (*.vrt *.VRT)'  :  '^.*\.(vrt)$', 
-   '[Raster] GeoTIFF (*.tif *.tiff *.TIF *.TIFF)'  :  '^.*\.(tiff|tif)$', 
-   '[Raster] National Imagery Transmission Format (*.ntf *.NTF)'  :  '^.*\.(ntf)$', 
-   '[Raster] Raster Product Format TOC format (*.toc *.TOC)'  :  '^.*\.(toc)$', 
-   '[Raster] Erdas Imagine Images  (*.img *.IMG)'  :  '^.*\.(img)$', 
-   '[Raster] Ground-based SAR Applications Testbed File Format  (*.gff *.GFF)'  :  '^.*\.(gff)$', 
-   '[Raster] Arc/Info ASCII Grid (*.asc *.ASC)'  :  '^.*\.(asc)$', 
-   '[Raster] SDTS Raster (*.ddf *.DDF)'  :  '^.*\.(ddf)$', 
-   '[Raster] DTED Elevation Raster (*.dt0 *.dt1 *.dt2 *.DT0 *.DT1 *.DT2)'  :  '^.*\.(dt0|dt1|dt2)$', 
-   '[Raster] Portable Network Graphics (*.png *.PNG)'  :  '^.*\.(png)$', 
-   '[Raster] JPEG JFIF (*.jpg *.jpeg *.JPG *.JPEG)'  :  '^.*\.(jpg|jpeg)$', 
-   '[Raster] Japanese DEM  (*.mem *.MEM)'  :  '^.*\.(mem)$', 
-   '[Raster] Graphics Interchange Format  (*.gif *.GIF)'  :  '^.*\.(gif)$', 
-   '[Raster] Envisat Image Format (*.n1 *.N1)'  :  '^.*\.(n1)$', 
-   '[Raster] X11 PixMap Format (*.xpm *.XPM)'  :  '^.*\.(xpm)$', 
-   '[Raster] MS Windows Device Independent Bitmap (*.bmp *.BMP)'  :  '^.*\.(bmp)$', 
-   '[Raster] PCIDSK Database File (*.pix *.PIX)'  :  '^.*\.(pix)$', 
-   '[Raster] PCRaster Raster File (*.map *.MAP)'  :  '^.*\.(map)$', 
-   '[Raster] ILWIS Raster Map (*.mpr *.mpl *.MPR *.MPL)'  :  '^.*\.(mpr|mpl)$', 
-   '[Raster] SGI Image File Format 1.0 (*.rgb *.RGB)'  :  '^.*\.(rgb)$', 
-   '[Raster] SRTMHGT File Format (*.hgt *.HGT)'  :  '^.*\.(hgt)$', 
-   '[Raster] Leveller heightfield (*.ter *.TER)'  :  '^.*\.(ter)$', 
-   '[Raster] Terragen heightfield (*.ter *.TER)'  :  '^.*\.(ter)$', 
-   '[Raster] GMT NetCDF Grid Format (*.nc *.NC)'  :  '^.*\.(nc)$', 
-   '[Raster] Network Common Data Format (*.nc *.NC)'  :  '^.*\.(nc)$', 
-   '[Raster] GRIdded Binary  (*.grb *.GRB)'  :  '^.*\.(grb)$', 
-   '[Raster] Raster Matrix Format (*.rsw *.RSW)'  :  '^.*\.(rsw)$', 
-   '[Raster] EUMETSAT Archive native  (*.nat *.NAT)'  :  '^.*\.(nat)$', 
-   '[Raster] Idrisi Raster A.1 (*.rst *.RST)'  :  '^.*\.(rst)$', 
-   '[Raster] Golden Software ASCII Grid  (*.grd *.GRD)'  :  '^.*\.(grd)$', 
-   '[Raster] Golden Software Binary Grid  (*.grd *.GRD)'  :  '^.*\.(grd)$', 
-   '[Raster] Golden Software 7 Binary Grid  (*.grd *.GRD)'  :  '^.*\.(grd)$', 
-   '[Raster] DRDC COASP SAR Processor Raster (*.hdr *.HDR)'  :  '^.*\.(hdr)$', 
-   '[Raster] R Object Data Store (*.rda *.RDA)'  :  '^.*\.(rda)$', 
-   '[Raster] Portable Pixmap Format  (*.pnm *.PNM)'  :  '^.*\.(pnm)$', 
-   '[Raster] Vexcel MFF Raster (*.hdr *.HDR)'  :  '^.*\.(hdr)$', 
-   '[Raster] VTP .bt (Binary Terrain) 1.3 Format (*.bt *.BT)'  :  '^.*\.(bt)$', 
-   '[Raster] FARSITE v.4 Landscape File  (*.lcp *.LCP)'  :  '^.*\.(lcp)$', 
-   '[Raster] Swedish Grid RIK  (*.rik *.RIK)'  :  '^.*\.(rik)$', 
-   '[Raster] USGS Optional ASCII DEM  (*.dem *.DEM)'  :  '^.*\.(dem)$', 
-   '[Raster] GeoSoft Grid Exchange Format (*.gxf *.GXF)'  :  '^.*\.(gxf)$', 
-   '[Raster] Hierarchical Data Format Release 5 (*.hdf5 *.HDF5)'  :  '^.*\.(hdf5)$', 
-   '[Raster] Northwood Numeric Grid Format .grd/.tab (*.grd *.GRD)'  :  '^.*\.(grd)$', 
-   '[Raster] Northwood Classified Grid Format .grc/.tab (*.grc *.GRC)'  :  '^.*\.(grc)$', 
-   '[Raster] ARC Digitized Raster Graphics (*.gen *.GEN)'  :  '^.*\.(gen)$', 
-   '[Raster] Standard Raster Product  (*.img *.IMG)'  :  '^.*\.(img)$', 
-   '[Raster] Magellan topo  (*.blx *.BLX)'  :  '^.*\.(blx)$', 
-   '[Raster] Rasterlite (*.sqlite *.SQLITE)'  :  '^.*\.(sqlite)$', 
-   '[Raster] SAGA GIS Binary Grid  (*.sdat)'  :  '^.*\.(sdat)$' 
+   '[Raster] Enhanced Compression Wavelet (*.ecw)' : '^.*\.(ecw)$',
+   '[Raster] Virtual Raster (*.vrt *.VRT)'  :  '^.*\.(vrt)$',
+   '[Raster] GeoTIFF (*.tif *.tiff *.TIF *.TIFF)'  :  '^.*\.(tiff|tif)$',
+   '[Raster] National Imagery Transmission Format (*.ntf *.NTF)'  :  '^.*\.(ntf)$',
+   '[Raster] Raster Product Format TOC format (*.toc *.TOC)'  :  '^.*\.(toc)$',
+   '[Raster] Erdas Imagine Images  (*.img *.IMG)'  :  '^.*\.(img)$',
+   '[Raster] Ground-based SAR Applications Testbed File Format  (*.gff *.GFF)'  :  '^.*\.(gff)$',
+   '[Raster] Arc/Info ASCII Grid (*.asc *.ASC)'  :  '^.*\.(asc)$',
+   '[Raster] SDTS Raster (*.ddf *.DDF)'  :  '^.*\.(ddf)$',
+   '[Raster] DTED Elevation Raster (*.dt0 *.dt1 *.dt2 *.DT0 *.DT1 *.DT2)'  :  '^.*\.(dt0|dt1|dt2)$',
+   '[Raster] Portable Network Graphics (*.png *.PNG)'  :  '^.*\.(png)$',
+   '[Raster] JPEG JFIF (*.jpg *.jpeg *.JPG *.JPEG)'  :  '^.*\.(jpg|jpeg)$',
+   '[Raster] Japanese DEM  (*.mem *.MEM)'  :  '^.*\.(mem)$',
+   '[Raster] Graphics Interchange Format  (*.gif *.GIF)'  :  '^.*\.(gif)$',
+   '[Raster] Envisat Image Format (*.n1 *.N1)'  :  '^.*\.(n1)$',
+   '[Raster] X11 PixMap Format (*.xpm *.XPM)'  :  '^.*\.(xpm)$',
+   '[Raster] MS Windows Device Independent Bitmap (*.bmp *.BMP)'  :  '^.*\.(bmp)$',
+   '[Raster] PCIDSK Database File (*.pix *.PIX)'  :  '^.*\.(pix)$',
+   '[Raster] PCRaster Raster File (*.map *.MAP)'  :  '^.*\.(map)$',
+   '[Raster] ILWIS Raster Map (*.mpr *.mpl *.MPR *.MPL)'  :  '^.*\.(mpr|mpl)$',
+   '[Raster] SGI Image File Format 1.0 (*.rgb *.RGB)'  :  '^.*\.(rgb)$',
+   '[Raster] SRTMHGT File Format (*.hgt *.HGT)'  :  '^.*\.(hgt)$',
+   '[Raster] Leveller heightfield (*.ter *.TER)'  :  '^.*\.(ter)$',
+   '[Raster] Terragen heightfield (*.ter *.TER)'  :  '^.*\.(ter)$',
+   '[Raster] GMT NetCDF Grid Format (*.nc *.NC)'  :  '^.*\.(nc)$',
+   '[Raster] Network Common Data Format (*.nc *.NC)'  :  '^.*\.(nc)$',
+   '[Raster] GRIdded Binary  (*.grb *.GRB)'  :  '^.*\.(grb)$',
+   '[Raster] Raster Matrix Format (*.rsw *.RSW)'  :  '^.*\.(rsw)$',
+   '[Raster] EUMETSAT Archive native  (*.nat *.NAT)'  :  '^.*\.(nat)$',
+   '[Raster] Idrisi Raster A.1 (*.rst *.RST)'  :  '^.*\.(rst)$',
+   '[Raster] Golden Software ASCII Grid  (*.grd *.GRD)'  :  '^.*\.(grd)$',
+   '[Raster] Golden Software Binary Grid  (*.grd *.GRD)'  :  '^.*\.(grd)$',
+   '[Raster] Golden Software 7 Binary Grid  (*.grd *.GRD)'  :  '^.*\.(grd)$',
+   '[Raster] DRDC COASP SAR Processor Raster (*.hdr *.HDR)'  :  '^.*\.(hdr)$',
+   '[Raster] R Object Data Store (*.rda *.RDA)'  :  '^.*\.(rda)$',
+   '[Raster] Portable Pixmap Format  (*.pnm *.PNM)'  :  '^.*\.(pnm)$',
+   '[Raster] Vexcel MFF Raster (*.hdr *.HDR)'  :  '^.*\.(hdr)$',
+   '[Raster] VTP .bt (Binary Terrain) 1.3 Format (*.bt *.BT)'  :  '^.*\.(bt)$',
+   '[Raster] FARSITE v.4 Landscape File  (*.lcp *.LCP)'  :  '^.*\.(lcp)$',
+   '[Raster] Swedish Grid RIK  (*.rik *.RIK)'  :  '^.*\.(rik)$',
+   '[Raster] USGS Optional ASCII DEM  (*.dem *.DEM)'  :  '^.*\.(dem)$',
+   '[Raster] GeoSoft Grid Exchange Format (*.gxf *.GXF)'  :  '^.*\.(gxf)$',
+   '[Raster] Hierarchical Data Format Release 5 (*.hdf5 *.HDF5)'  :  '^.*\.(hdf5)$',
+   '[Raster] Northwood Numeric Grid Format .grd/.tab (*.grd *.GRD)'  :  '^.*\.(grd)$',
+   '[Raster] Northwood Classified Grid Format .grc/.tab (*.grc *.GRC)'  :  '^.*\.(grc)$',
+   '[Raster] ARC Digitized Raster Graphics (*.gen *.GEN)'  :  '^.*\.(gen)$',
+   '[Raster] Standard Raster Product  (*.img *.IMG)'  :  '^.*\.(img)$',
+   '[Raster] Magellan topo  (*.blx *.BLX)'  :  '^.*\.(blx)$',
+   '[Raster] Rasterlite (*.sqlite *.SQLITE)'  :  '^.*\.(sqlite)$',
+   '[Raster] SAGA GIS Binary Grid  (*.sdat)'  :  '^.*\.(sdat)$'
   }
 
 
-class QGISFileBrowserDialog(QDockWidget): 
-  #Signal notify when a file needs to be opened
-  fileOpenRequest = pyqtSignal(QString)
+class QGISFileBrowserDialog(QDockWidget):
+    #Signal notify when a file needs to be opened
+    fileOpenRequest = pyqtSignal(QString)
 
-  def __init__(self): 
-    QDockWidget.__init__(self)
-    # Set up the user interface from Designer.
-    self.ui = Ui_QGISFileBrowser()
-    self.ui.setupUi(self)
+    def __init__(self):
+        QDockWidget.__init__(self)
+        # Set up the user interface from Designer.
+        self.ui = Ui_QGISFileBrowser()
+        self.ui.setupUi(self)
 
-    #Load the filter list
-    for key in sorted(filters.iterkeys()):
-        self.ui.filtercombobox.addItem(key)
+        #Load the filter list
+        for key in sorted(filters.iterkeys()):
+            self.ui.filtercombobox.addItem(key)
 
-  def LoadFiles(self): 
-    self.model = QFileSystemModel(self.ui.fileTree)
-    self.model.setRootPath(QDir.homePath())
-    self.proxy = MyFilter()
-    self.proxy.setSourceModel(self.model)
-    self.proxy.setFilterKeyColumn(0)
+    def LoadFiles(self):
+        self.model = QFileSystemModel(self.ui.fileTree)
+        self.model.setRootPath(QDir.homePath())
+        self.proxy = MyFilter()
+        self.proxy.setSourceModel(self.model)
+        self.proxy.setFilterKeyColumn(0)
 
-    self.proxy.setFilterRegExp(QRegExp(filters[str(self.ui.filtercombobox.currentText())],Qt.CaseInsensitive,QRegExp.RegExp))
+        self.proxy.setFilterRegExp(QRegExp(filters[unicode(self.ui.filtercombobox.currentText())],Qt.CaseInsensitive,QRegExp.RegExp))
 
-    self.ui.fileTree.setModel(self.proxy)
-    self.ui.fileTree.hideColumn(1)
-    self.ui.fileTree.hideColumn(2)
-    self.ui.fileTree.hideColumn(3)
-    #Hack to make sure the horizontal scroll bar shows up
-    self.ui.fileTree.header().setStretchLastSection(False)
-    self.ui.fileTree.header().setResizeMode(QHeaderView.ResizeToContents)
-    self.ui.fileTree.setColumnWidth(0,280)
-    
-    #Just hide the header because we don't need to see it.
-    self.ui.fileTree.header().hide()
+        self.ui.fileTree.setModel(self.proxy)
+        self.ui.fileTree.hideColumn(1)
+        self.ui.fileTree.hideColumn(2)
+        self.ui.fileTree.hideColumn(3)
+        #Hack to make sure the horizontal scroll bar shows up
+        self.ui.fileTree.header().setStretchLastSection(False)
+        self.ui.fileTree.header().setResizeMode(QHeaderView.ResizeToContents)
+        self.ui.fileTree.setColumnWidth(0,280)
 
-    self.connect(self.ui.filtercombobox,SIGNAL("currentIndexChanged( const QString &)"),self.filterChanged)
-    self.connect(self.ui.fileTree,SIGNAL("doubleClicked( const QModelIndex &)"), self.itemClicked)
+        #Just hide the header because we don't need to see it.
+        self.ui.fileTree.header().hide()
 
-  def filterChanged(self, text): 
-    self.proxy.setFilterRegExp(QRegExp(filters[str(text)],Qt.CaseInsensitive,QRegExp.RegExp))
+        self.connect(self.ui.filtercombobox,SIGNAL("currentIndexChanged( const QString &)"),self.filterChanged)
+        self.connect(self.ui.fileTree,SIGNAL("doubleClicked( const QModelIndex &)"), self.itemClicked)
 
-  def itemClicked(self, item): 
-    index = item.model().mapToSource(item)
-    filepath = self.model.filePath(index)
-    #We don't need to do anything if filepath is a directory.
-    if os.path.isdir(filepath):
-        return
-    
-    self.fileOpenRequest.emit(str(filepath))
+    def filterChanged(self, text):
+        self.proxy.setFilterRegExp(QRegExp(filters[str(text)],Qt.CaseInsensitive,QRegExp.RegExp))
 
-  def updateFilter(self, text): 
-    self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))
-    
+    def itemClicked(self, item):
+        index = item.model().mapToSource(item)
+        filepath = unicode(self.model.filePath(index).toUtf8(),"utf-8")
+        #We don't need to do anything if filepath is a directory.
+        if os.path.isdir(filepath):
+            return
 
-class MyFilter(QSortFilterProxyModel): 
-    def __init__(self,parent=None): 
+        self.fileOpenRequest.emit(filepath)
+
+    def updateFilter(self, text):
+        self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))
+
+
+class MyFilter(QSortFilterProxyModel):
+    def __init__(self,parent=None):
         super(MyFilter, self).__init__(parent)
 
-    def filterAcceptsRow (self, source_row, source_parent ): 
-        if self.filterRegExp() =="": 
+    def filterAcceptsRow (self, source_row, source_parent ):
+        if self.filterRegExp() =="":
             return True #Shortcut for common case
 
         source_index = self.sourceModel().index(source_row, 0, source_parent)
 
-        if self.sourceModel().isDir(source_index): 
+        if self.sourceModel().isDir(source_index):
             return True
 
         return self.sourceModel().data(source_index).toString().contains(self.filterRegExp())
-
 
