@@ -59,21 +59,26 @@ class QGISFileBrowser:
         self.iface = iface
 
     def initGui(self):
+        self.pluginname = "&QGIS File Browser"
         # Create action that will start plugin configuration
         self.action = QAction(QIcon(":/plugins/qgisfilebrowser/icon.png"), \
-            "QGISFileBrowser", self.iface.mainWindow())
+            self.pluginname, self.iface.mainWindow())
+
         # connect the action to the run method
         self.action.triggered.connect(self.run)
 
-        #QObject.connect(self.action, SIGNAL("triggered()"), self.run)
-
         # Add toolbar button and menu item
         self.iface.addToolBarIcon(self.action)
-        self.iface.addPluginToMenu("&QGISFileBrowser", self.action)
+        self.iface.addPluginToMenu(self.pluginname, self.action)
+
+        for action in self.iface.pluginMenu().actions():
+            if action.text() == QString(self.pluginname):
+                # update the icon
+                action.setIcon(QIcon(":/plugins/qgisfilebrowser/icon.png"))
 
     def unload(self):
         # Remove the plugin menu item and icon
-        self.iface.removePluginMenu("&QGISFileBrowser",self.action)
+        self.iface.removePluginMenu(self.pluginname,self.action)
         self.iface.removeToolBarIcon(self.action)
 
     # run method that performs all the real work

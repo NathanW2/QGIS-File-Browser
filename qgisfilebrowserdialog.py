@@ -143,8 +143,8 @@ class QGISFileBrowserDialog(QDockWidget):
         #Just hide the header because we don't need to see it.
         self.ui.fileTree.header().hide()
 
-        self.connect(self.ui.filtercombobox,SIGNAL("currentIndexChanged( const QString &)"),self.filterChanged)
-        self.connect(self.ui.fileTree,SIGNAL("doubleClicked( const QModelIndex &)"), self.itemClicked)
+        self.ui.filtercombobox.currentIndexChanged[QString].connect(self.filterChanged)
+        self.ui.fileTree.doubleClicked.connect(self.itemClicked)
 
     def filterChanged(self, text):
         self.proxy.setFilterRegExp(QRegExp(filters[str(text)],Qt.CaseInsensitive,QRegExp.RegExp))
