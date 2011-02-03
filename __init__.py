@@ -24,7 +24,7 @@ def name():
 def description():
   return "A tree like file browser that can open any qgis supported format into qgis."
 def version():
-  return "Version 1.2"
+  return "Version 1.2.1"
 def icon():
   return "icon.png"
 def qgisMinimumVersion():
