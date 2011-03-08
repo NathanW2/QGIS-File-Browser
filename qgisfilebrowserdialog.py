@@ -23,6 +23,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from ui_qgisfilebrowser import Ui_QGISFileBrowser
 import os
+from qgis.core import QgsVectorFileWriter
 
 #Should find a better way to do this rather then using regex
 #Needs to be refactored into different lists.
@@ -121,6 +122,11 @@ class QGISFileBrowserDialog(QDockWidget):
         #Load the filter list
         for key in sorted(filters.iterkeys()):
             self.ui.filtercombobox.addItem(key)
+            
+        self.openFileAction = QAction("Open Layer",  self)
+        self.openFileAction.triggered.connect(self.openFile)
+        self.deleteFileAction = QAction("Delete Layer",  self)
+        self.deleteFileAction.triggered.connect(self.deleteFile)
 
     def LoadFiles(self):
         self.model = QFileSystemModel(self.ui.fileTree)
@@ -145,6 +151,8 @@ class QGISFileBrowserDialog(QDockWidget):
 
         self.ui.filtercombobox.currentIndexChanged[QString].connect(self.filterChanged)
         self.ui.fileTree.doubleClicked.connect(self.itemClicked)
+        self.ui.fileTree.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.ui.fileTree.customContextMenuRequested.connect(self.customContext)
 
     def filterChanged(self, text):
         self.proxy.setFilterRegExp(QRegExp(filters[str(text)],Qt.CaseInsensitive,QRegExp.RegExp))
@@ -157,6 +165,40 @@ class QGISFileBrowserDialog(QDockWidget):
             return
 
         self.fileOpenRequest.emit(filepath)
+        
+    def openFile(self):
+        index = self.ui.fileTree.currentIndex()
+        self.itemClicked(index)
+        
+    def deleteFile(self):
+        index = self.ui.fileTree.currentIndex()
+        index = index.model().mapToSource(index)
+        filepath = unicode(self.model.filePath(index).toUtf8(), "utf-8")
+        if os.path.isdir(filepath):
+            return
+        else:
+            # careful... maybe we should double check with the user?
+            ok = QMessageBox.warning(self.ui.fileTree, "QGIS File Browser", 
+            "Are you sure you want to \ndelete this layer and associated files?",
+            QMessageBox.Yes|QMessageBox.Cancel)
+            if ok == QMessageBox.Yes:
+                if filepath.endswith(".shp"):
+                    QgsVectorFileWriter.deleteShapeFile(filepath)
+                else:
+                    self.model.remove(index)
+
+    def customContext(self, point):
+        index = self.ui.fileTree.indexAt(point)
+        # Don't show the menu if we don't have a vaild tree item. 
+        if not index.isValid():
+            return
+
+        self.ui.fileTree.setCurrentIndex(index)
+
+        menu = QMenu("Menu")
+        menu.addAction(self.openFileAction)
+        menu.addAction(self.deleteFileAction)
+        menu.exec_(self.ui.fileTree.mapToGlobal(point))
 
     def updateFilter(self, text):
         self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))
