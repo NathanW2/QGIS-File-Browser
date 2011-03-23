@@ -111,7 +111,7 @@ class QGISFileBrowser:
         else:
             #We should never really get here, but just in case.
             pass
-
+        
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = QMainWindow(None)

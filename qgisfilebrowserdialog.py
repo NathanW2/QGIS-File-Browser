@@ -127,9 +127,20 @@ class QGISFileBrowserDialog(QDockWidget):
         self.openFileAction.triggered.connect(self.openFile)
         self.deleteFileAction = QAction("Delete Layer",  self)
         self.deleteFileAction.triggered.connect(self.deleteFile)
+        self.setAsRootAction = QAction("Set as root path",self)
+        self.setAsRootAction.triggered.connect(self.setPathAsRoot)
+        
+        self.folderMenu = QMenu("Folder Menu")
+        self.folderMenu.addAction(self.setAsRootAction)
+        
+        self.fileMenu = QMenu("File Menu")
+        self.fileMenu.addAction(self.openFileAction)
+        self.fileMenu.addAction(self.deleteFileAction)
 
     def LoadFiles(self):
         self.model = QFileSystemModel(self.ui.fileTree)
+        settings = QSettings()
+        rootpath = setting.value("tree/rootPath",QDir.homePath())
         self.model.setRootPath(QDir.homePath())
         self.proxy = MyFilter()
         self.proxy.setSourceModel(self.model)
@@ -169,11 +180,15 @@ class QGISFileBrowserDialog(QDockWidget):
     def openFile(self):
         index = self.ui.fileTree.currentIndex()
         self.itemClicked(index)
+    
+    def setPathAsRoot(self):
+        settings = QSettings()
+        path = getCurrentItem()
+        if os.path.isdir(path):
+            rootpath = setting.setValue("tree/rootPath",path)
         
     def deleteFile(self):
-        index = self.ui.fileTree.currentIndex()
-        index = index.model().mapToSource(index)
-        filepath = unicode(self.model.filePath(index).toUtf8(), "utf-8")
+        filepath = getCurrentItem()
         if os.path.isdir(filepath):
             return
         else:
@@ -186,19 +201,28 @@ class QGISFileBrowserDialog(QDockWidget):
                     QgsVectorFileWriter.deleteShapeFile(filepath)
                 else:
                     self.model.remove(index)
+    
+    def getCurrentItem(self):
+        ''' Returns the current item that is selected in the tree view '''
+        index = self.ui.fileTree.currentIndex()
+        index = index.model().mapToSource(index)
+        filepath = unicode(self.model.filePath(index).toUtf8(), "utf-8")
+        return filePath
 
     def customContext(self, point):
         index = self.ui.fileTree.indexAt(point)
         # Don't show the menu if we don't have a vaild tree item. 
         if not index.isValid():
             return
-
+        
         self.ui.fileTree.setCurrentIndex(index)
-
-        menu = QMenu("Menu")
-        menu.addAction(self.openFileAction)
-        menu.addAction(self.deleteFileAction)
-        menu.exec_(self.ui.fileTree.mapToGlobal(point))
+        filepath = getCurrentItem()
+        
+        # If we are a folder then give the folder options.
+        if os.path.isdir(filepath):
+            self.folderMenu.exec_(self.ui.fileTree.mapToGlobal(point))
+        else:     
+            self.fileMenu.exec_(self.ui.fileTree.mapToGlobal(point))
 
     def updateFilter(self, text):
         self.proxy.setFilterRegExp(QRegExp(text,Qt.CaseInsensitive,QRegExp.RegExp))
